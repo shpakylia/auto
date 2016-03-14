@@ -1,0 +1,69 @@
+.second-nav {
+  margin-bottom: 0 !important; }
+  .second-nav ul {
+    float: right;
+    font-size: 12px; }
+
+.brand {
+  text-align: center;
+  background: url("/img/four.png") no-repeat center;
+  background-size: contain;
+  font-size: 32px;
+  text-transform: uppercase;
+  color: #FFD700;
+  text-shadow: 1px 2px 2px #666;
+  margin: 10px; }
+  .brand p:first-of-type {
+    text-align: left; }
+  .brand p:last-of-type {
+    text-align: right;
+    margin-bottom: -5px !important; }
+
+.location, .work, .contacts {
+  margin: 10px;
+  text-align: center; }
+  .location > p, .work > p, .contacts > p {
+    text-transform: uppercase;
+    color: #666;
+    font-weight: bold;
+    text-align: center; }
+  .location div, .work div, .contacts div {
+    border: 1px dashed #FFD700;
+    padding: 5px; }
+    .location div span, .work div span, .contacts div span {
+      font-weight: bold; }
+  .location p, .work p, .contacts p {
+    margin-bottom: 0; }
+
+.contacts div {
+  padding: 5px 0; }
+  .contacts div > p {
+    padding-bottom: 10px; }
+
+.first-nav .navbar-nav {
+  float: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 18px; }
+  .first-nav .navbar-nav li {
+    float: none;
+    display: inline-block; }
+    .first-nav .navbar-nav li a {
+      color: #666;
+      text-shadow: 1px 0 #666; }
+    .first-nav .navbar-nav li a:hover {
+      color: #666;
+      text-shadow: 1px 0 #FFD700; }
+
+@media (max-width: 1200px) {
+  .brand {
+    padding-left: 0 !important;
+    padding-right: 0 !important; } }
+@media (max-width: 1024px) {
+  .brand {
+    padding-left: 0 !important;
+    padding-right: 0 !important; }
+    .brand p {
+      padding: 10px; } }
+
+/*# sourceMappingURL=main.css.map */

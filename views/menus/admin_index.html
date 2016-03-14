@@ -1,0 +1,46 @@
+<h3> Меню </h3>
+        <!--поле для выбора меню для редактирования-->
+<div class="container-fluid list-menu">
+    <div class="row">
+        <div class="col-sm-5">
+            <!--<form method="post" class="menu">-->
+                <!--<div class="form-group">-->
+                    <!--<label for="menu_title">Выберите меню для редактирования:</label>-->
+                    <!--<select name="menu_title" id="menu_title" class="form-control">-->
+                        <!--<?php foreach($data['menus'] as $menu):?>-->
+                        <!--<option value="<?=$menu['term_id']?>"><?=$menu['title']?></option>-->
+                        <!--<?php endforeach;?>-->
+                    <!--</select>-->
+                <!--</div>-->
+                <!--<a href="/admin/menus/edit/"><button type="submit" class="select-menu btn btn-default">Выбрать</button></a>-->
+            <!--</form>-->
+            <table class="menu table table-striped" style="width: 400px;">
+                <?php foreach($data['menus'] as $menu) { ?>
+                <tr>
+                    <td><b><?=$menu['title']?></b></td>
+                    <td align="right">
+                        <a href="/admin/menus/edit/<?=$menu['term_id']?>"><button class="btn btn-sm btn-primary">Изменить</button></a>
+                        <a href="/admin/menus/delete/<?=$menu['term_id']?>" onclick="return confirmDelete();"><button class="btn btn-sm btn-warning">Удалить</button></a>
+                    </td>
+                </tr>
+                <?php } ?>
+            </table>
+        </div>
+        <div class="col-sm-2  menu or">
+            <span>или</span>
+        </div>
+        <div class="col-sm-5">
+            <form method="post" class="menu">
+                <div class="form-group">
+                    <label for="addMenu">Название нового меню:</label>
+                    <input type="text" id="addMenu" name="addMenu" class="form-control" required>
+                </div>
+               <button  type="submit" class="btn btn-default">Добавить меню</button>
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+
+        <!--акордион со страницами и категориями-->
+

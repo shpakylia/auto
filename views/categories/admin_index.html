@@ -1,0 +1,18 @@
+<h3>Категории</h3><br/>
+<table class="table table-striped" style="width: 400px;">
+    <?php foreach($data['categories'] as $category_data) { ?>
+    <tr>
+        <td><b><?=$category_data['title']?></b></td>
+        <td align="right">
+            <a href="/admin/categories/edit/<?=$category_data['term_id']?>"><button class="btn btn-sm btn-primary">Изменить</button></a>
+            <a href="/admin/categories/delete/<?=$category_data['term_id']?>" onclick="return confirmDelete();"><button class="btn btn-sm btn-warning">Удалить</button></a>
+        </td>
+    </tr>
+    <?php } ?>
+</table>
+
+<br/>
+
+<div>
+    <a href="/admin/categories/add/"><button class="btn btn-sm btn-success">Добавить новую</button></a>
+</div>

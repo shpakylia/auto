@@ -1,0 +1,96 @@
+<h3>Изменить категорию</h3><br/>
+<div class="container-fluid">
+<form method="post" action="">
+
+        <div class="col-sm-6">
+
+
+    <input type="hidden" name="id" value="<?=$data['category']['term_id']?>" />
+    <div class="form-group">
+        <label for="alias">Алиас</label>
+        <input type="text" id="alias" name="alias" value="<?=$data['category']['alias']?>" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="title">Название</label>
+        <input type="text" id="title" name="title" value="<?=$data['category']['title']?>" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="content">Описание</label>
+        <textarea name="content" id="content" class="form-control"><?=$data['category']['content']?></textarea>
+    </div>
+    <div class="form-group">
+        <label for="parent">Родительская страница</label>
+        <select class="form-control" name="parent" id="parent">
+            <option value="<?php echo ($data['category']['parent']) ? $data['category']['parent'] : '0'?>"><?php echo ($data['category']['parent']) ? $data['category']['title'] : 'нет родительской'?></option>
+            <?php foreach ($data['categories'] as $cat):?>
+            <option value="<?=$cat['term_id']?>"><?=$cat['title']?></option>
+            <?php endforeach;?>
+
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="is_published">Опубликовать?</label>
+        <input type="checkbox" name="is_published" id="is_published" <?php if( $data['category']['is_published'] ) { ?>checked="checked" <?php } ?> />
+    </div>
+    <input type="submit" class="btn btn-success" />
+        </div>
+
+    <div class="col-sm-offset-2 col-sm-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">Миниатюра записи:</div>
+            <div class="panel-body ">
+                <?php $thumb_post= isset($data['post_thumb']) ? $data['post_thumb'] : $data['thumb'][0]['guid'];
+                    if($thumb_post):?>
+                <input type="hidden" name="thumb" value="<?=$thumb_post?>"/>
+                <img class="thumb_panel" src="<?=$thumb_post?>" alt=""/>
+                <?endif;?>
+
+                <a id="myModal" href="#img_cat">Задать миниатюру</a><br>
+                <?php if($data['thumb']):?>
+                <a style="color: red" href="/admin/posts/delete_thumb/<?=$data['post'][0]['id']?>/">Удалить миниатюру</a>
+                <?php endif;?>
+            </div>
+        </div>
+    </div>
+    <div id="thumbnail" style="display:none">
+        <form method="post" class="thumbnails">
+            <table>
+                <?php
+                $key = 0;
+                for ($j = 1; $j<=ceil(count($data['thumbnails'])/3); $j++):?>
+                <tr>
+                    <?php for($i = 1; $i<=3;$i++):
+                         if(array_key_exists ($key,$data['thumbnails'])): ?>
+                    <td>
+                        <div>
+                            <label>
+                                <input class="radio_thumb" type="radio" name="thumb" value="<?=$data['thumbnails'][$key]?>"/>
+                                <img src="<?=$data['thumbnails'][$key]?>" alt=""/>
+                            </label>
+                        </div>
+
+                    </td>
+                    <?php endif;
+                         $key++;
+                        endfor;?>
+
+                </tr>
+
+                <?php endfor;?>
+            </table>
+            <input style=" float: right" class="btn btn-success" type="submit" value="Задать миниатюру"/>
+        </form>
+        <div class="panel load_thunb">
+            <div class="panel-heading">Загрузить картинку:</div>
+            <div class="panel-body">
+                <form method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="MAX_FILE_SIZE" value="200000">
+                    <input name="userFile[]" type="file" multiple > <br>
+                    <input type="submit" value="Загрузить">
+
+                </form>
+            </div>
+        </div>
+    </div>
+</form>
+</div>

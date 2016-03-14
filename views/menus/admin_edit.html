@@ -1,0 +1,141 @@
+<h3> Меню </h3>
+<br>
+
+        <!--акордион со страницами и категориями-->
+<div class="row">
+    <div class="col-sm-4">
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            Страницы
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body form-group">
+                        <form method="post" class="menu-checkbox">
+                            <?php foreach($data['pages'] as $page): ?>
+                            <label>
+                                <input type="checkbox" name="page[]"  value="<?= $page['term_id']?>"/> <?= $page[title] ?>
+                            </label>
+                            </br>
+
+                            <?php endforeach;?>
+                            <br>
+                            <input type="submit" value="Добавить в меню"  class="page-submit btn btn-success"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                            Категории
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel-body form-group">
+                        <form method="post" class="menu-checkbox">
+                            <?php foreach($data['categories'] as $category): ?>
+                            <label>
+                                <input type="checkbox"  name="category[]"  value="<?=$category['term_id']?>"/> <?= $category[title] ?>
+                            </label>
+                            </br>
+
+                            <?php endforeach;?>
+                            <br>
+                            <input type="submit" value="Добавить в меню" class="category-submit  btn btn-success"/>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                            Внешняя ссылка
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <form method="post" class="custom_link">
+                            <div class="form-group">
+                                <label for="url">URL</label>
+                                <input type="text" name="url" id="url" value="http://" class="form-control" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="text_url">Текст ссылки</label>
+                                <input type="text" name="text_url" id="text_url" class="form-control" required/>
+                            </div>
+                            <br>
+                            <input type="submit" value="Добавить в меню" class="custom_link_submit btn btn-success"/>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <form method="post" class="edit-menu">
+        <div class="panel panel-default">
+
+            <div class="panel-heading">
+                <!--<div class="form-group name-menu">-->
+                    <!--<label for="name_menu" class="col-sm-3 control-label">Название меню</label>-->
+                    <!--<div class="col-sm-4">-->
+                        <!--<input type="text" class="form-control" id="name_menu">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <label for="name_menu">Название меню</label>
+                <input type="text" id="name_menu" name = "menu_title" value="<?=$data['menu']['title']?>">
+                <!--</div>-->
+            </div>
+            <form method="post">
+
+            <div class="panel-body">
+                <table class="table table-striped" style="width: 100%;">
+
+                    <tr>
+                        <td style="width: 10%;">Тип</td>
+                        <td style="width: 10%;">Название</td>
+                        <td style="width: 25%;">Порядок отображения</td>
+                        <td style="width: 10%;"></td>
+                    </tr>
+                <?php foreach($data['menu_item'] as $menu_item):
+                switch($menu_item['taxonomy']){
+                case 'page': $tax = 'страница';break;
+                case 'category': $tax = 'категория';break;
+                case 'custom_link': $tax = 'внешняя ссылка';break;
+                }
+                ?>
+                    <tr>
+                        <td><i><?=$tax?></i></td>
+                        <td><strong><?=$menu_item['title']?></strong></td>
+                        <td><input type="text" name = "menu_order[][<?=$menu_item['term_page_id']?>]" value="<?=$menu_item['term_order']?>"/></td>
+                        <td align="right">
+                            <a class="btn btn-danger" href="/admin/menus/deleteItem/<?=$data['menu']['term_id']?>/<?=$menu_item['term_page_id']?>">
+                                Удалить
+                            </a>
+                        </td>
+                    </tr>
+
+                <?php endforeach;?>
+                </table>
+            </div>
+            <div class="panel-footer">
+                <a href="/admin/menus/save"><button class="btn btn-success ">Сохранить меню</button></a>
+            </div>
+            </form>
+
+
+        </div>
+        </form>
+    </div>
+</div>

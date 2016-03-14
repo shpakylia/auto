@@ -1,0 +1,106 @@
+$gold: #FFD700;
+$grey: #666;
+.second-nav{
+  margin-bottom: 0!important;
+  ul{
+    float: right;
+    font-size: 12px;
+  }
+}
+.brand{
+  text-align: center;
+//  padding: 20px;
+  background: url("/img/four.png") no-repeat center;
+  background-size: contain;
+  font-size: 32px;
+  text-transform: uppercase;
+  color: $gold;
+  text-shadow:  1px 2px 2px $grey;
+  margin: 10px;
+
+    p:first-of-type{
+//      color: #3C769D;
+      text-align: left;
+    }
+    p:last-of-type{
+//      color: blueviolet;
+      text-align: right;
+      margin-bottom: -5px!important;
+
+    }
+
+}
+.location,.work, .contacts{
+  margin: 10px;
+  text-align: center;
+    >p{
+      text-transform: uppercase;
+      color: $grey;
+  //    text-shadow:  1px 2px 2px #666;
+      font-weight: bold;
+      text-align: center;
+//      border-bottom: 1px dashed;
+
+    }
+  div{
+    border: 1px dashed $gold;
+    padding: 5px;
+    span{
+      font-weight: bold;
+    }
+  }
+    p{
+      margin-bottom: 0;
+    }
+
+}
+.contacts{
+  div{
+    padding: 5px 0;
+    >p{
+      padding-bottom: 10px;
+    }
+  }
+}
+.first-nav{
+  .navbar-nav{
+    float: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 18px;
+    li {
+      float: none;
+      display: inline-block;
+      a{
+        color: $grey;
+        text-shadow:  1px 0 $grey;
+
+      }
+      a:hover{
+        color: $grey;
+        text-shadow:  1px 0 $gold;
+
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1200px){
+  .brand{
+    padding-left: 0!important;
+    padding-right: 0!important;
+  }
+}
+
+@media (max-width: 1024px){
+  .brand{
+    padding-left: 0!important;
+    padding-right: 0!important;
+//    font-size: 22px;
+    p{
+      padding: 10px;
+    }
+  }
+}
+

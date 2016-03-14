@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><?=Config::get('site_name')?></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/scss/admin_main.css">
+    <script src="/js/admin.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!--<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>-->
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/markitup/skins/markitup/style.css" />
+    <link rel="stylesheet" type="text/css" href="/markitup/sets/default/style.css" />
+    <script type="text/javascript" src="/markitup/jquery.markitup.js"></script>
+    <script type="text/javascript" src="/markitup/sets/default/set.js"></script>
+    <script src="http://netdna.jboxcdn.com/0.3.1/jBox.min.js"></script>
+    <link href="http://netdna.jboxcdn.com/0.3.1/jBox.css" rel="stylesheet">
+
+
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/"><?=Config::get('site_name')?> - <?=__('lng.admin', 'Admin Section')?></a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <?php if ( Session::get('login') ) { ?>
+            <ul class="nav navbar-nav">
+                <li <?php if( App::getRouter()->getController() == 'pages' ) {?>class="active"<?php } ?>><a href="/admin/pages/">Страницы</a></li>
+                <!--<li <?php if( App::getRouter()->getController() == 'contacts' ) {?>class="active"<?php } ?>><a href="/admin/contacts/">Contact Us</a></li>-->
+                <li <?php if( App::getRouter()->getController() == 'categories' ) {?>class="active"<?php } ?>><a href="/admin/categories/">Категории</a></li>
+                <li <?php if( App::getRouter()->getController() == 'menus' ) {?>class="active"<?php } ?>><a href="/admin/menus/">Меню</a></li>
+                <li <?php if( App::getRouter()->getController() == 'posts' ) {?>class="active"<?php } ?>><a href="/admin/posts/">Записи</a></li>
+                <li><a href="/admin/users/logout">Logout</a></li>
+            </ul>
+            <?php } ?>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="starter-template">
+
+        <?php if( Session::hasFlash() ){ ?>
+            <div class="alert alert-info" role="alert">
+                <?php Session::flash(); ?>
+            </div>
+        <?php } ?>
+
+        <?=$data['content']?>
+    </div>
+
+</div>
+
+</body>
+</html>

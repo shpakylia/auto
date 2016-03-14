@@ -1,0 +1,21 @@
+<!--подключаем шапку-->
+<?php require_once(VIEWS_PATH.DS."head".DS."index.html");?>
+
+
+    <div class="container">
+
+        <div class="starter-template">
+
+            <?php if( Session::hasFlash() ){ ?>
+            <div class="alert alert-info" role="alert">
+                <?php Session::flash(); ?>
+            </div>
+            <?php } ?>
+
+            <?=$data['content']?>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<h3>Страницы</h3><br/>
+<table class="table table-striped" style="width: 400px;">
+<?php foreach($data['pages'] as $page_data) { ?>
+    <tr>
+        <td><b><?=$page_data['title']?></b></td>
+        <td align="right">
+            <a href="/admin/pages/edit/<?=$page_data['term_id']?>"><button class="btn btn-sm btn-primary">Изменить</button></a>
+            <a href="/admin/pages/delete/<?=$page_data['term_id']?>" onclick="return confirmDelete();"><button class="btn btn-sm btn-warning">Удалить</button></a>
+        </td>
+    </tr>
+<?php } ?>
+</table>
+
+<br/>
+
+<div>
+    <a href="/admin/pages/add/"><button class="btn btn-sm btn-success">Добавить новую</button></a>
+</div>

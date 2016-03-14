@@ -1,0 +1,25 @@
+<h3> Записи </h3>
+        <!--поле для выбора меню для редактирования-->
+<div class="container-fluid">
+    <div class="row">
+        <div>
+            <a href="/admin/posts/add/"> <button class="btn btn-sm btn-primary">Добавить новую запись</button></a><br><br><br>
+            <table class="table table-striped" style="width: 400px;">
+                <?php foreach($data['posts'] as $post) { ?>
+                <tr>
+                    <td><b><?=$post['post_title']?></b></td>
+                    <td align="right">
+                        <a href="/admin/posts/edit/<?=$post['id']?>"><button class="btn btn-sm btn-primary">Изменить</button></a>
+                        <a href="/admin/posts/delete/<?=$post['id']?>" onclick="return confirmDelete();"><button class="btn btn-sm btn-warning">Удалить</button></a>
+                    </td>
+                </tr>
+                <?php } ?>
+            </table>
+        </div>
+
+    </div>
+</div>
+<br>
+
+        <!--акордион со страницами и категориями-->
+
